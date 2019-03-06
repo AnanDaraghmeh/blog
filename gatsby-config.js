@@ -1,27 +1,27 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    title: `Blog: Anan Daraghmeh`,
+    author: `Anan Daraghmeh`,
+    description: `I write about web development`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
-    },
+      twitter: `AnanDaraghmeh`
+    }
   },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
+        name: `blog`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
-      },
+        path: `${__dirname}/src/images`,
+        name: `images`
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -30,20 +30,21 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
-            },
+              maxWidth: 590
+            }
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
+              wrapperStyle: `margin-bottom: 1.0725rem`
+            }
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
-        ],
-      },
+          `gatsby-remark-external-links`
+        ]
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -51,7 +52,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
+      }
     },
     `gatsby-plugin-feed`,
     {
@@ -63,16 +64,26 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
-      },
+        icon: `static/gatsby-icon.png`
+      }
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-robots-txt`,
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `tomato`,
+        showSpinner: false
+      }
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
+        pathToConfigModule: `src/utils/typography`
+      }
     },
-  ],
-}
+    `gatsby-plugin-netlify`
+  ]
+};

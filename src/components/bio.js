@@ -1,66 +1,46 @@
-/**
- * Bio component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import Image from 'gatsby-image';
 
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import styles from './layout/Layout.module.css';
 
-import { rhythm } from "../utils/typography"
-
-function Bio() {
+function Bio({ text }) {
   return (
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata
+        console.log(data);
+        const { author, social } = data.site.siteMetadata;
         return (
-          <div
-            style={{
-              display: `flex`,
-              marginBottom: rhythm(2.5),
-            }}
-          >
+          <div className={styles.bio}>
             <Image
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
               style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
+                minWidth: '75px',
+                marginRight: '1rem',
+                marginBottom: '1rem'
               }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
+              imgStyle={{ borderRadius: '50%' }}
             />
-            <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {` `}
+            <div style={{ fontSize: '0.8rem', marginBottom: '1rem' }}>
+              <span style={{ display: 'block' }}>
+                <strong>{author}</strong>
+              </span>
+              <span style={{ display: 'block' }}>{text}</span>
               <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
+                Follow me on Twitter
               </a>
-            </p>
+            </div>
           </div>
-        )
+        );
       }}
     />
-  )
+  );
 }
 
 const bioQuery = graphql`
-  query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-      childImageSharp {
-        fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
+  query {
     site {
       siteMetadata {
         author
@@ -69,7 +49,14 @@ const bioQuery = graphql`
         }
       }
     }
+    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+      childImageSharp {
+        fixed(width: 75, height: 75) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
   }
-`
+`;
 
-export default Bio
+export default Bio;
