@@ -62,9 +62,9 @@ module.exports = {
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#de751f`,
         display: `minimal-ui`,
-        icon: `static/gatsby-icon.png`
+        icon: `static/favicon.png`
       }
     },
     `gatsby-plugin-offline`,
@@ -74,7 +74,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
-        color: `tomato`,
+        color: `#613b1f`,
         showSpinner: false
       }
     },
