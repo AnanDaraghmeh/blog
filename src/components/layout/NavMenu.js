@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 
-import BIO from '../Bio';
+import BIO from '../bio';
 
 function NavMenu() {
   return (

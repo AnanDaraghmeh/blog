@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, graphql } from 'gatsby';
 
 import Layout from '../components/layout/Layout';
-import SEO from '../components/Seo';
+import SEO from '../components/seo';
 import styles from './index.module.css';
 import NavMenu from '../components/layout/NavMenu';
 
