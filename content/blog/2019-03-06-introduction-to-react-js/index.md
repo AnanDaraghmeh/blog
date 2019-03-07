@@ -35,7 +35,8 @@ however, in react world there are many frameworks that are based on react librar
 ## What should you know before learning react?
 
 You should be familiar with the basics of web development (ie, HTML5, CSS3 and javaScript). It is recommended that you learn the newer javascript syntax and features (ES6 and beyond) as react uses these features extensively. It is definitely possible to learn react without knowing ES6 features but it is more challenging.
+In addition to ES6, familiarity with node.js and node package managers are also recommended.
 
-> Knowing newer javaScript syntax is recommended before learning react
+> Knowing newer javaScript syntax and familiarity with node.js are recommended before learning react.
 
 **The next article will be about setting the development environment and getting started with create-react-app.**

@@ -19,7 +19,7 @@ class HomePage extends React.Component {
             {posts.map(post => {
               return (
                 <div key={post.node.fields.slug}>
-                  <h3>
+                  <h3 style={{ marginBottom: '0.2rem' }}>
                     <Link to={post.node.fields.slug}>
                       {post.node.frontmatter.title}
                     </Link>
