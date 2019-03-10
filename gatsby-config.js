@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Blog: Anan Daraghmeh`,
+    title: `Blog | Anan Daraghmeh`,
     author: `Anan Daraghmeh`,
-    description: `I write about web development`,
-    siteUrl: `https://https://anandaraghmeh-blog.netlify.com/`,
+    description: `Blog about web development, mainly react.`,
+    siteUrl: `https://anandaraghmeh-blog.netlify.com`,
     social: {
       twitter: `AnanDaraghmeh`
     }
@@ -58,7 +58,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-135936892-2`,
+        trackingId: `UA-135936892-2`
       }
     },
     `gatsby-plugin-feed`,
