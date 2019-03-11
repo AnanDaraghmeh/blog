@@ -38,12 +38,14 @@ To check if you have node already installed on your computer, open the terminal 
 node --version;
 ```
 
-node comes with npm (a package manager), run the following command in the terminal to make sure that it is installed correctly:
+<br>
+Node comes with npm (a package manager), run the following command in the terminal to make sure that it is installed correctly:
 
 ```javascript
 npm --version
 ```
 
+<br>
 2. Now open your terminal an run the following command and hit enter:
 
 ```javascript

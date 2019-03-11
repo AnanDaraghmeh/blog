@@ -20,7 +20,6 @@ There are two types of components in react, class-based components and functiona
 #### Class-based components:
 
 create a new file called `HelloWorld.js` inside `/src` folder.
-
 A class-based component is an ES6 class as shown below:
 
 ```javascript
@@ -38,6 +37,8 @@ class HelloWorld extends React.Component {
 
 export default HelloWorld;
 ```
+
+<br/>
 
 > Node.js by default supports commonJS modules and importing is done using `require()`
 > but thanks to create-react-app and babel we can use ES modules instead.
@@ -69,6 +70,7 @@ import HelloWorld from './HelloWorld';
 ReactDOM.render(<HelloWorld />, document.querySelector('#root'));
 ```
 
+<br/>
 Here we are importing ReactDOM library in addition to react form `/node_modules`. ReactDOM is needed whenever we want to act on the DOM (typically in index.js).
 
 The ReactDOM.render() method accepts 2 arguments:
@@ -82,6 +84,7 @@ After that, open your terminal (if you are using VS code, you can use its integr
 npm start
 ```
 
+<br/>
 This will start a local development server (on localhost:3000) and opens a new tab in your default browser.
 
 In this very basic example, You should be able to see "Hello World!" inside your browser window.
@@ -104,6 +107,8 @@ const HelloWorld = () => {
 export default HelloWorld;
 ```
 
+<br/>
+
 ## So, what is the difference?
 
 - Class components are usually considered "smart" components as they can hold logic besides returning JSX, while functional components are "dummy" components and typically used for presentational purpose.
@@ -111,6 +116,6 @@ export default HelloWorld;
 - Class components have life-cycle methods (will be discussed later, these methods are used to control the component during its life cycle form the moment it is mounted on the screen to the moment it is unmounted).
 - Class components provides a better way of organizing the code, especially when you need to create several helper methods.
 
-> A new feature has been introduced to react (react hooks) that enables functional components to have a state and life-cycle methods.
+  > A new feature has been introduced to react (react hooks) that enables functional components to have a state and life-cycle methods.
 
 **The next article will be about JSX.**
