@@ -1,5 +1,5 @@
 ---
-title: Getting started with create-react-app
+title: React 02 - Getting started with create-react-app
 date: 2019-03-07
 ---
 
@@ -64,4 +64,4 @@ Wait until create-react-app does its thing as it may take several minutes.
 - `package-lock.json`: a json file that lists the exact version number of the packages that your packages are dependent on.
 - `.gitignore`: a file that lists files and folders that should be ignored by git (version control system).
 
-**In next article will be about Components in react.**
+**The next article will be about Components in react.**
