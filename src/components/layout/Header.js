@@ -6,12 +6,12 @@ function Header() {
     <div>
       <h3>
         <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: 'black',
-            fontSize: '0.8rem'
-          }}
+          css={`
+            box-shadow: none;
+            text-decoration: none;
+            color: black;
+            font-size: 0.8rem;
+          `}
           to={`/`}
         >
           HOME

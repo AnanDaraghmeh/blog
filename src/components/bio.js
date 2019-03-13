@@ -1,8 +1,20 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
+import styled from 'styled-components';
 
-import styles from './layout/Layout.module.css';
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  margin: 1rem auto;
+  @media (min-width: 768px) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+`;
 
 function Bio({ text }) {
   return (
@@ -11,7 +23,7 @@ function Bio({ text }) {
       render={data => {
         const { author, social } = data.site.siteMetadata;
         return (
-          <div className={styles.bio}>
+          <Container>
             <Image
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
@@ -31,7 +43,7 @@ function Bio({ text }) {
                 Follow me on Twitter
               </a>
             </div>
-          </div>
+          </Container>
         );
       }}
     />
