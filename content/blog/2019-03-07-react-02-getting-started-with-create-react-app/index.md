@@ -1,6 +1,7 @@
 ---
 title: React 02 - Getting started with create-react-app
 date: 2019-03-07
+description: Getting started with create-react-app
 ---
 
 ![react](../../assets/react-logo-2.png)

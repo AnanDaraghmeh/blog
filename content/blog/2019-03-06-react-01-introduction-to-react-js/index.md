@@ -1,6 +1,8 @@
 ---
 title: React 01 - Introduction to react.js
-date: '2019-03-06'
+date: 2019-03-06
+description: An introduction to react library.
+thumbnail: '../../assets/react-logo-1.png'
 ---
 
 ![react](../../assets/react-logo-2.png)

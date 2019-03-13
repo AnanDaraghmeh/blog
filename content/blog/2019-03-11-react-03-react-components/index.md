@@ -1,6 +1,7 @@
 ---
 title: React 03 - React Components
 date: 2019-03-11
+description: An introduction to react components.
 ---
 
 ![react](../../assets/react-logo-2.png)

@@ -25,11 +25,11 @@ class HomePage extends React.Component {
                     </Link>
                   </h3>
                   <small>{post.node.frontmatter.date}</small>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.node.excerpt
-                    }}
-                  />
+                  {post.node.frontmatter.description ? (
+                    <p>{post.node.frontmatter.description}</p>
+                  ) : (
+                    <p>{post.node.excerpt}</p>
+                  )}
                 </div>
               );
             })}
@@ -53,6 +53,14 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
+            description
+            thumbnail {
+              childImageSharp {
+                fixed {
+                  src
+                }
+              }
+            }
           }
           excerpt
         }

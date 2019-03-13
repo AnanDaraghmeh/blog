@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Blog | Anan Daraghmeh`,
+    title: `React For Cats`,
     author: `Anan Daraghmeh`,
     description: `Blog about web development, mainly react.`,
-    siteUrl: `https://anandaraghmeh-blog.netlify.com`,
+    siteUrl: `https://reactforcats.netlify.com`,
     social: {
       twitter: `AnanDaraghmeh`
     }
@@ -65,12 +65,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Anan Daraghmeh Blog`,
-        short_name: `Anan Blog`,
+        name: `React For Cats`,
+        short_name: `RFC`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#de751f`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `static/favicon.png`
       }
     },

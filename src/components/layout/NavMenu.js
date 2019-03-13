@@ -7,7 +7,7 @@ function NavMenu() {
   return (
     <div>
       <Header />
-      <BIO text="Hey! I'm a web developer. I write about web development in general but mainly things related to react js."/>
+      <BIO text="Hey! I'm Anan, a web developer. I write about web development in general particularly things related to react."/>
     </div>
   );
 }
