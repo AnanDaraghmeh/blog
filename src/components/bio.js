@@ -16,7 +16,7 @@ const Container = styled.div`
   }
 `;
 
-function Bio({ text }) {
+function Bio({ customName, text }) {
   return (
     <StaticQuery
       query={bioQuery}
@@ -36,10 +36,10 @@ function Bio({ text }) {
             />
             <div style={{ fontSize: '0.8rem', marginBottom: '1rem' }}>
               <span style={{ display: 'block' }}>
-                <strong>{author}</strong>
+                <strong>{customName}</strong>
               </span>
               <span style={{ display: 'block' }}>{text}</span>
-              <a href={`https://twitter.com/${social.twitter}`}>
+              <a href={`https://twitter.com/${social.twitter}`} target="_blank">
                 Follow me on Twitter
               </a>
             </div>

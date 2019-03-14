@@ -6,20 +6,20 @@ import Footer from './Footer';
 const Container = styled.div`
 margin-right: auto;
 margin-left: auto;
-padding: 1.3rem;
+padding: 1rem;
 @media (min-width: 480px) {
-    padding: 1.7rem;
+    padding: 1.5rem;
 }
 
 @media (min-width: 768px) {
-    padding: 2.3rem;
+    padding: 2rem 2.3rem;
 }
 @media (min-width: 992px) {
-    padding: 4rem;
+    padding: 2.5rem 4rem;
 }
 
 @media (min-width: 1200px) {
-    padding: 6rem;
+    padding: 3rem 6rem;
   }
 }`;
 

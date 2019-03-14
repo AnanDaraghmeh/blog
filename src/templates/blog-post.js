@@ -22,7 +22,7 @@ class BlogPostTemplate extends React.Component {
         <p>{post.frontmatter.date}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr />
-        <Bio />
+        <Bio customName="Anan Daraghmeh" />
         <ul
           style={{
             display: `flex`,
