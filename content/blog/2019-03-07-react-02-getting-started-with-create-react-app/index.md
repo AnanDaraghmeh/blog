@@ -2,9 +2,8 @@
 title: React 02 - Getting started with create-react-app
 date: 2019-03-07
 description: Getting started with create-react-app
+thumbnail: '../../assets/react-logo-2.png'
 ---
-
-![react](../../assets/react-logo-2.png)
 
 **This series of articles target beginners to react.**
 

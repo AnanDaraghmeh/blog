@@ -39,7 +39,11 @@ function Bio({ customName, text }) {
                 <strong>{customName}</strong>
               </span>
               <span style={{ display: 'block' }}>{text}</span>
-              <a href={`https://twitter.com/${social.twitter}`} target="_blank">
+              <a
+                href={`https://twitter.com/${social.twitter}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Follow me on Twitter
               </a>
             </div>
@@ -63,7 +67,7 @@ const bioQuery = graphql`
     avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
       childImageSharp {
         fixed(width: 75, height: 75) {
-          ...GatsbyImageSharpFixed
+          ...GatsbyImageSharpFixed_tracedSVG
         }
       }
     }

@@ -2,9 +2,8 @@
 title: Immutability in react
 date: 2019-03-13
 description: Immutability in react. What is it and why it is important?
+thumbnail: '../../assets/react-logo-2.png'
 ---
-
-![react](../../assets/react-logo-2.png)
 
 **"DO NOT MUTATE THE STATE!"**
 

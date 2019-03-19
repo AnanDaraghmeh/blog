@@ -9,7 +9,6 @@ module.exports = {
     }
   },
   plugins: [
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -63,6 +62,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-feed`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
