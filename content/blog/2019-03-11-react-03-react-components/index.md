@@ -5,7 +5,7 @@ description: An introduction to react components.
 thumbnail: '../../assets/react-logo-2.png'
 ---
 
-**This series of articles target beginners to react.**
+**This series of articles target absolute beginners to react.**
 
 In the previous article, I talked about the advantages of create-react-app particularly for beginners. In this article, I will talk about the most important concept in react, components.
 

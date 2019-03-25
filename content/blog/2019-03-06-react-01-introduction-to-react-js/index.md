@@ -5,7 +5,7 @@ description: An introduction to react library.
 thumbnail: '../../assets/react-logo-2.png'
 ---
 
-**This series of articles target beginners to react.**
+**This series of articles target absolute beginners to react.**
 
 ## What is react and why it is so popular?
 

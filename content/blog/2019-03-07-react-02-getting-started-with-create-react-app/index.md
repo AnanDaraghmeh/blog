@@ -5,7 +5,7 @@ description: Getting started with create-react-app
 thumbnail: '../../assets/react-logo-2.png'
 ---
 
-**This series of articles target beginners to react.**
+**This series of articles target absolute beginners to react.**
 
 As I mentioned in the previous article, [create-react-app](https://github.com/facebook/create-react-app) is the easiest and the recommended way to get started with react.
 In this article, I will explain the basic steps to get you up and running with this tool.
