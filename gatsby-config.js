@@ -1,3 +1,8 @@
+const dotenv = require('dotenv');
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
+
 module.exports = {
   siteMetadata: {
     title: `React For Cats`,
@@ -12,22 +17,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         path: `${__dirname}/src/images`,
         name: `images`
+      }
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `qmu562vgdh34`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
       }
     },
     {
@@ -35,33 +33,42 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-images-contentful`,
             options: {
-              maxWidth: 590
+              maxWidth: 650,
+              wrapperStyle: `margin-bottom: 1rem`
             }
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`
+              wrapperStyle: `margin-bottom: 1rem`
             }
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              noInlineHighlight: true
+            }
+          },
           `gatsby-remark-external-links`
         ]
       }
     },
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`
+      }
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: `UA-135936892-2`
       }
     },
-    `gatsby-plugin-feed`,
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -84,12 +91,6 @@ module.exports = {
       options: {
         color: `#613b1f`,
         showSpinner: false
-      }
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`
       }
     },
     `gatsby-plugin-netlify`

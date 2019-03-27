@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #fff5eb;
+  background-color: #fff;
 }
 
 a {
@@ -19,4 +19,14 @@ a:hover {
 }
 a:active {
   color: #7a4316;
+}
+
+/* inline code in md files*/
+code {
+  color: #a05619;
+}
+
+/* code blocks in md files */
+pre {
+  margin-bottom: 1rem !important;
 }

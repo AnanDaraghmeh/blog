@@ -29,7 +29,7 @@ const Grid = styled.div`
 class HomePage extends React.Component {
   render() {
     const { data } = this.props;
-    const posts = data.allMarkdownRemark.edges;
+    const posts = data.allContentfulPost.edges;
     return (
       <Layout>
         <SEO title="All posts" />
@@ -38,17 +38,13 @@ class HomePage extends React.Component {
           <div>
             {posts.map(post => {
               return (
-                <div key={post.node.fields.slug}>
+                <div key={post.node.slug}>
                   <h3 style={{ marginBottom: '0.2rem' }}>
-                    <Link to={post.node.fields.slug}>
-                      {post.node.frontmatter.title}
-                    </Link>
+                    <Link to={post.node.slug}>{post.node.title}</Link>
                   </h3>
-                  <small>{post.node.frontmatter.date}</small>
-                  {post.node.frontmatter.description ? (
-                    <p>{post.node.frontmatter.description}</p>
-                  ) : (
-                    <p>{post.node.excerpt}</p>
+                  <small>{post.node.publishDate}</small>
+                  {post.node.description && (
+                    <p>{post.node.description.description}</p>
                   )}
                 </div>
               );
@@ -64,18 +60,25 @@ export default HomePage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allContentfulPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
+          title
+          slug
+          publishDate(formatString: "MMMM DD, YYYY")
+          description {
             description
           }
-          excerpt
+          body {
+            childMarkdownRemark {
+              html
+            }
+          }
+          heroImage {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
         }
       }
     }

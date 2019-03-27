@@ -18,41 +18,42 @@ const Navigation = styled.ul`
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark;
-    const postThumnail = post.frontmatter.thumbnail.childImageSharp.fluid;
+    const post = this.props.data.contentfulPost;
+    const postThumnail = post.heroImage.fluid;
     const { previous, next } = this.props.pageContext;
 
     return (
       <Layout>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
+        <SEO title={post.title} description={post.description.description} />
         <Header />
-        <h1 style={{ marginBottom: '0' }}>{post.frontmatter.title}</h1>
-        <p style={{ marginBottom: '0' }}>{post.frontmatter.date}</p>
+        <h1 style={{ marginBottom: '0' }}>{post.title}</h1>
+        <p style={{ marginBottom: '0' }}>{post.publishDate}</p>
 
         <Image
           fluid={postThumnail}
           style={{ width: '75%', maxWidth: '700px', margin: '1rem auto' }}
-          alt={post.frontmatter.title}
+          alt={post.title}
         />
 
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: post.body.childMarkdownRemark.html
+          }}
+        />
         <hr />
         <Bio customName="Anan Daraghmeh" />
         <Navigation>
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+              <Link to={previous.slug} rel="prev">
+                ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+              <Link to={next.slug} rel="next">
+                {next.title} →
               </Link>
             )}
           </li>
@@ -66,20 +67,21 @@ export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
+    contentfulPost(slug: { eq: $slug }) {
+      title
+      slug
+      publishDate
+      description {
         description
-        thumbnail {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
+      }
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+      heroImage {
+        fluid {
+          ...GatsbyContentfulFluid
         }
       }
     }
