@@ -1,15 +1,24 @@
 import React from 'react';
-import Header from './Header';
-
-import BIO from '../bio';
+import { Link } from 'gatsby';
 
 function NavMenu() {
   return (
-    <div>
-      <Header />
-      <BIO 
-      customName="Hi! I'm Anan, a web developer."
-      text="I write about web development in general particularly things related to react." />
+    <div
+      css={`
+        margin-bottom: 1rem;
+      `}
+    >
+      <Link
+        css={`
+          text-decoration: none;
+          color: black;
+          font-size: 0.8rem;
+          font-weight: bold;
+        `}
+        to={`/`}
+      >
+        HOME
+      </Link>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import NavMenu from './NavMenu';
 import Footer from './Footer';
 
 const Container = styled.div`
@@ -27,6 +28,7 @@ class Layout extends React.Component {
   render() {
     return (
       <Container>
+        <NavMenu/>
         <main>{this.props.children}</main>
         <Footer />
       </Container>

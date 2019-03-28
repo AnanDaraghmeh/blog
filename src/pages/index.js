@@ -4,14 +4,14 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout/Layout';
 import SEO from '../components/seo';
-import NavMenu from '../components/layout/NavMenu';
+import SideMenu from '../components/layout/SideMenu';
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
 
-  @media (min-width: 850px) {
+  @media (min-width: 900px) {
     grid-template-columns: 1fr 3fr;
   }
 
@@ -28,24 +28,25 @@ const Grid = styled.div`
 
 class HomePage extends React.Component {
   render() {
-    const { data } = this.props;
-    const posts = data.allContentfulPost.edges;
+    const posts = this.props.data.allContentfulPost.edges;
+
     return (
       <Layout>
         <SEO title="All posts" />
         <Grid>
-          <NavMenu />
+          <SideMenu />
           <div>
             {posts.map(post => {
               return (
                 <div key={post.node.slug}>
                   <h3 style={{ marginBottom: '0.2rem' }}>
-                    <Link to={post.node.slug}>{post.node.title}</Link>
+                    <Link to={`/${post.node.slug}`}>{post.node.title}</Link>
                   </h3>
                   <small>{post.node.publishDate}</small>
-                  {post.node.description && (
-                    <p>{post.node.description.description}</p>
-                  )}
+                  <p>
+                    {post.node.description.internal.content ||
+                      post.node.body.childMarkdownRemark.excerpt}
+                  </p>
                 </div>
               );
             })}
@@ -67,11 +68,14 @@ export const pageQuery = graphql`
           slug
           publishDate(formatString: "MMMM DD, YYYY")
           description {
-            description
+            internal {
+              content
+            }
           }
           body {
             childMarkdownRemark {
               html
+              excerpt
             }
           }
           heroImage {
