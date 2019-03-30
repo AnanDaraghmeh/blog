@@ -20,7 +20,6 @@ const Navigation = styled.ul`
 
 class BlogPostTemplate extends React.Component {
   render() {
-    console.log(this.props);
     const post = this.props.data.contentfulPost;
     const postHeroImage = post.heroImage.fluid;
     const postDescription =

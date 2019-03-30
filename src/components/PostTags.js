@@ -28,7 +28,7 @@ const PostTags = ({ tags }) => {
         {tags.map((tag, index) => {
           return (
             <TagLink to={`/tags/${tag}`} key={index}>
-              {tag}>
+              {tag}
             </TagLink>
           );
         })}

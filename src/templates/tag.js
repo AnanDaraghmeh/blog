@@ -28,7 +28,7 @@ class Tag extends React.Component {
         <Layout>
           <div>
             <h3>{tagHeader}</h3>
-            <ul>{postLinks}</ul>
+            <ul style={{ listStyle: 'none', margin: '0' }}>{postLinks}</ul>
             <p>
               <Link to="/tags/">Browse all tags</Link>
             </p>
