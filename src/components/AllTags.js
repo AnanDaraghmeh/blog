@@ -21,7 +21,7 @@ const TagLink = styled(Link)`
   margin-right: 0.5rem;
 `;
 
-const TagList = () => {
+const AllTags = () => {
   return (
     <StaticQuery
       query={tagsQuery}
@@ -46,7 +46,7 @@ const TagList = () => {
   );
 };
 
-export default TagList;
+export default AllTags;
 
 const tagsQuery = graphql`
   query {

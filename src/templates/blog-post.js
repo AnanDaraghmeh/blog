@@ -6,8 +6,10 @@ import Image from 'gatsby-image';
 import Bio from '../components/bio';
 import Layout from '../components/layout/Layout';
 import SEO from '../components/seo';
-import TagList from '../components/TagList';
 import Divider from '../components/layout/Divider';
+import SocialShare from '../components/SocialShare';
+import PostTags from '../components/PostTags';
+import Disqus from '../components/Disqus';
 
 const Navigation = styled.ul`
   display: flex;
@@ -18,14 +20,20 @@ const Navigation = styled.ul`
 
 class BlogPostTemplate extends React.Component {
   render() {
+    console.log(this.props);
     const post = this.props.data.contentfulPost;
     const postHeroImage = post.heroImage.fluid;
     const postDescription =
       post.description.internal.content ||
       post.body.childMarkdownRemark.excerpt;
     const postBody = post.body.childMarkdownRemark.html;
-    const postTags = post.tags;
     const { previous, next } = this.props.pageContext;
+    const postUrl = `${this.props.data.site.siteMetadata.siteUrl}/${post.slug}`;
+    const disqusConfig = {
+      url: postUrl,
+      identifier: post.id,
+      title: post.title
+    };
 
     return (
       <Layout>
@@ -45,8 +53,13 @@ class BlogPostTemplate extends React.Component {
           }}
         />
         <Divider />
-        <TagList tagsArray={postTags} />
-        <Divider />
+        <PostTags tags={post.tags} />
+        <SocialShare
+          shareUrl={postUrl}
+          shareTitle={post.title}
+          shareTags={post.tags}
+          shareQuote={post.description.internal.content}
+        />
         <Bio customName="Anan Daraghmeh" />
         <Navigation>
           <li>
@@ -64,6 +77,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </Navigation>
+        <Disqus disqusConfig={disqusConfig} />
       </Layout>
     );
   }
@@ -74,6 +88,7 @@ export default BlogPostTemplate;
 export const pageQuery = graphql`
   query($slug: String!) {
     contentfulPost(slug: { eq: $slug }) {
+      id
       title
       slug
       publishDate(formatString: "MMMM DD, YYYY")
@@ -94,6 +109,11 @@ export const pageQuery = graphql`
         }
       }
       tags
+    }
+    site {
+      siteMetadata {
+        siteUrl
+      }
     }
   }
 `;

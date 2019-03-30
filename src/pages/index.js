@@ -38,7 +38,7 @@ class HomePage extends React.Component {
           <div>
             {posts.map(post => {
               return (
-                <div key={post.node.slug}>
+                <div key={post.node.id}>
                   <h3 style={{ marginBottom: '0.2rem' }}>
                     <Link to={`/${post.node.slug}`}>{post.node.title}</Link>
                   </h3>
@@ -64,6 +64,7 @@ export const pageQuery = graphql`
     allContentfulPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
+          id
           title
           slug
           publishDate(formatString: "MMMM DD, YYYY")

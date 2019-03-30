@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BIO from '../bio';
-import TagList from '../TagList';
+import AllTags from '../AllTags';
 
 const TagListWrapper = styled.div`
   @media only screen and (max-width: 900px) {
@@ -18,7 +18,7 @@ function SideMenu() {
         text="I write about web development in general particularly things related to react."
       />
       <TagListWrapper>
-        <TagList />
+        <AllTags />
       </TagListWrapper>
     </div>
   );
