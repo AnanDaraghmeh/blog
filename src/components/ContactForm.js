@@ -50,7 +50,13 @@ const Button = styled.button`
 function ContactForm() {
   return (
     <FormWrapper>
-      <Form name="contact" method="POST" data-netlify="true">
+      <Form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="contact" />
         <Field>
           <label for="name">Name:</label>
 
