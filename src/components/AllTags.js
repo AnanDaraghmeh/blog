@@ -23,7 +23,7 @@ const TagLink = styled(Link)`
   background: #96653e;
   color: white;
   padding: 0.1rem 0.2rem;
-  margin-right: 0.5rem;
+  margin-right: 0.2rem;
   border-radius: 5px;
   transition: all 0.3s;
   &:hover {
