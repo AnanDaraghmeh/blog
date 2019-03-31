@@ -50,7 +50,7 @@ const Button = styled.button`
 function ContactForm() {
   return (
     <FormWrapper>
-      <Form name="contact" netlify>
+      <Form name="contact" method="POST" data-netlify="true">
         <Field>
           <label for="name">Name:</label>
 
