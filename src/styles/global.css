@@ -6,6 +6,16 @@
   padding: 0;
 }
 
+::placeholder {
+  color: #613b1f;
+  opacity: 0.8;
+}
+
+::selection {
+  color: #613b1f;
+  background: #f5f2f0;
+}
+
 body {
   background-color: #fff;
 }
