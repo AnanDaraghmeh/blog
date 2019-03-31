@@ -53,17 +53,17 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const encode = data => {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
-};
-
 class ContactForm extends React.Component {
   state = {
     name: '',
     email: '',
     message: ''
+  };
+
+  encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
   };
 
   handleInputChange = e => {
@@ -74,10 +74,10 @@ class ContactForm extends React.Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    fetch('/?no-cache=1', {
+    fetch('/contact?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
+      body: this.encode({
         'form-name': 'contact',
         ...this.state
       })
@@ -93,7 +93,6 @@ class ContactForm extends React.Component {
         <Form
           onSubmit={this.handleFormSubmit}
           name="contact"
-          action="/form-submitted/"
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
