@@ -102,11 +102,7 @@ class ContactForm extends React.Component {
     const { name, email, message, recaptchaValue } = this.state;
     return (
       <FormWrapper>
-        <Form
-          onSubmit={this.handleFormSubmit}
-          data-netlify="true"
-          data-netlify-recaptcha="true"
-        >
+        <Form onSubmit={this.handleFormSubmit}>
           <Field>
             <Label htmlFor="name">Name:</Label>
             <Input
