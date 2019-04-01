@@ -60,7 +60,8 @@ class ContactForm extends React.Component {
     name: '',
     email: '',
     message: '',
-    recaptchaValue: null
+    recaptchaValue: null,
+    displayRecaptchaMessage: false
   };
 
   encode = data => {
@@ -77,29 +78,35 @@ class ContactForm extends React.Component {
 
   handleRecaptcha = value => {
     this.setState({
-      // for netlify
+      // for netlify to accept form submission
       'g-recaptcha-response': value,
-      // to control submit button
+      // to show error message if the value is null
       recaptchaValue: value
     });
   };
 
   handleFormSubmit = e => {
     e.preventDefault();
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: this.encode({
-        'form-name': 'contact',
-        ...this.state
+    if (this.state.recaptchaValue === null) {
+      this.setState({
+        displayRecaptchaMessage: true
+      });
+    } else {
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encode({
+          'form-name': 'contact',
+          ...this.state
+        })
       })
-    })
-      .then(() => navigate('/form-submitted/'))
-      .catch(error => console.log(error));
+        .then(() => navigate('/form-submitted/'))
+        .catch(error => console.log(error));
+    }
   };
 
   render() {
-    const { name, email, message, recaptchaValue } = this.state;
+    const { name, email, message, displayRecaptchaMessage } = this.state;
     return (
       <FormWrapper>
         <Form onSubmit={this.handleFormSubmit}>
@@ -141,9 +148,12 @@ class ContactForm extends React.Component {
             sitekey={process.env.SITE_RECAPTCHA_KEY}
             onChange={this.handleRecaptcha}
           />
-          <Button type="submit" disabled={recaptchaValue ? false : true}>
-            Submit
-          </Button>
+          {displayRecaptchaMessage && (
+            <p style={{ marginBottom: '0' }}>
+              Please check the box "I'm not a robot" to proceed!
+            </p>
+          )}
+          <Button type="submit">Submit</Button>
         </Form>
       </FormWrapper>
     );
