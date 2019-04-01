@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PageTransition from 'gatsby-plugin-page-transitions';
 
 import NavMenu from './NavMenu';
 import Footer from './Footer';
@@ -28,13 +27,11 @@ padding: 1.2rem;
 class Layout extends React.Component {
   render() {
     return (
-      <PageTransition>
-        <Container>
-          <NavMenu />
-          <main>{this.props.children}</main>
-          <Footer />
-        </Container>
-      </PageTransition>
+      <Container>
+        <NavMenu />
+        <main>{this.props.children}</main>
+        <Footer />
+      </Container>
     );
   }
 }
