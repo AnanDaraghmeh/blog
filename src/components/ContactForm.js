@@ -86,7 +86,7 @@ class ContactForm extends React.Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    fetch('/contact', {
+    fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: this.encode({
@@ -104,12 +104,9 @@ class ContactForm extends React.Component {
       <FormWrapper>
         <Form
           onSubmit={this.handleFormSubmit}
-          name="contact"
-          method="POST"
           data-netlify="true"
           data-netlify-recaptcha="true"
         >
-          <input type="hidden" name="form-name" value="contact" />
           <Field>
             <Label htmlFor="name">Name:</Label>
             <Input
