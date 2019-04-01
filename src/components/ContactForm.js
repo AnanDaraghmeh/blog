@@ -86,7 +86,7 @@ class ContactForm extends React.Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
-    fetch('/', {
+    fetch('/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: this.encode({
