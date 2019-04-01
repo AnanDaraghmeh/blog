@@ -110,6 +110,7 @@ class ContactForm extends React.Component {
     return (
       <FormWrapper>
         <Form onSubmit={this.handleFormSubmit}>
+        <input type="hidden" name="form-name" value="contact" />
           <Field>
             <Label htmlFor="name">Name:</Label>
             <Input
