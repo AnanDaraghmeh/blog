@@ -59,7 +59,8 @@ class ContactForm extends React.Component {
   state = {
     name: '',
     email: '',
-    message: ''
+    message: '',
+    recaptchaValue: null
   };
 
   encode = data => {
@@ -76,7 +77,10 @@ class ContactForm extends React.Component {
 
   handleRecaptcha = value => {
     this.setState({
-      'g-recaptcha-response': value
+      // for netlify
+      'g-recaptcha-response': value,
+      // to control submit button
+      recaptchaValue: value
     });
   };
 
@@ -102,7 +106,6 @@ class ContactForm extends React.Component {
           onSubmit={this.handleFormSubmit}
           name="contact"
           method="POST"
-          action="/form-submitted/"
           data-netlify="true"
           data-netlify-recaptcha="true"
         >
@@ -145,7 +148,9 @@ class ContactForm extends React.Component {
             sitekey={process.env.SITE_RECAPTCHA_KEY}
             onChange={this.handleRecaptcha}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={recaptchaValue ? false : true}>
+            Submit
+          </Button>
         </Form>
       </FormWrapper>
     );
