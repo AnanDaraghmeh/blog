@@ -1,7 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { navigate } from 'gatsby';
 import Recaptcha from 'react-google-recaptcha';
+
+import FormSubmitted from './FormSubmitted';
 
 const FormWrapper = styled.div`
   margin-top: 3rem;
@@ -61,7 +63,9 @@ class ContactForm extends React.Component {
     email: '',
     message: '',
     recaptchaValue: null,
-    displayRecaptchaMessage: false
+    displayRecaptchaMessage: false,
+    showSuccessOverlay: false,
+    showForm: true
   };
 
   encode = data => {
@@ -100,7 +104,9 @@ class ContactForm extends React.Component {
           ...this.state
         })
       })
-        .then(() => navigate('/form-submitted/'))
+        .then(() =>
+          this.setState({ showSuccessOverlay: true, showForm: false })
+        )
         .catch(error => console.log(error));
     }
   };
@@ -108,57 +114,62 @@ class ContactForm extends React.Component {
   render() {
     const { name, email, message, displayRecaptchaMessage } = this.state;
     return (
-      <FormWrapper>
-        <Form onSubmit={this.handleFormSubmit}>
-          <input type="hidden" name="form-name" value="contact" />
-          <Field>
-            <Label htmlFor="name">Name:</Label>
-            <Input
-              onChange={this.handleInputChange}
-              value={name}
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your name"
-              required
-            />
-          </Field>
-          <Field>
-            <Label htmlFor="email">Email:</Label>
-            <Input
-              onChange={this.handleInputChange}
-              value={email}
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Your email"
-              required
-            />
-          </Field>
-          <Field>
-            <Label htmlFor="message">Message:</Label>
-            <Textarea
-              onChange={this.handleInputChange}
-              value={message}
-              name="message"
-              id="message"
-              placeholder="Your message"
-              rows="3"
-              required
-            />
-          </Field>
-          <Recaptcha
-            sitekey={process.env.SITE_RECAPTCHA_KEY}
-            onChange={this.handleRecaptcha}
-          />
-          {displayRecaptchaMessage && (
-            <p style={{ marginBottom: '0' }}>
-              Please check the box "I'm not a robot" to proceed!
-            </p>
-          )}
-          <Button type="submit">Submit</Button>
-        </Form>
-      </FormWrapper>
+      <>
+        {this.state.showSuccessOverlay && <FormSubmitted />}
+        {this.state.showForm && (
+          <FormWrapper>
+            <Form onSubmit={this.handleFormSubmit}>
+              <input type="hidden" name="form-name" value="contact" />
+              <Field>
+                <Label htmlFor="name">Name:</Label>
+                <Input
+                  onChange={this.handleInputChange}
+                  value={name}
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="email">Email:</Label>
+                <Input
+                  onChange={this.handleInputChange}
+                  value={email}
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Your email"
+                  required
+                />
+              </Field>
+              <Field>
+                <Label htmlFor="message">Message:</Label>
+                <Textarea
+                  onChange={this.handleInputChange}
+                  value={message}
+                  name="message"
+                  id="message"
+                  placeholder="Your message"
+                  rows="3"
+                  required
+                />
+              </Field>
+              <Recaptcha
+                sitekey={process.env.SITE_RECAPTCHA_KEY}
+                onChange={this.handleRecaptcha}
+              />
+              {displayRecaptchaMessage && (
+                <p style={{ marginBottom: '0' }}>
+                  Please check the box "I'm not a robot" to proceed!
+                </p>
+              )}
+              <Button type="submit">Submit</Button>
+            </Form>
+          </FormWrapper>
+        )}
+      </>
     );
   }
 }
