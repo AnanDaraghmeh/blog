@@ -108,6 +108,7 @@ class ContactForm extends React.Component {
           data-netlify-honeypot="bot-field"
           data-netlify-recaptcha="true"
         >
+          <input type="hidden" name="form-name" value="contact" />
           <Field>
             <Label htmlFor="name">Name:</Label>
             <Input
