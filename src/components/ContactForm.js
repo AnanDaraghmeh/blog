@@ -82,7 +82,7 @@ class ContactForm extends React.Component {
         ...this.state
       })
     })
-      .then(() => navigate('/form-submitted/'))
+      .then(() => navigate('/form-submitted'))
       .catch(error => console.log(error));
   };
 
@@ -92,9 +92,12 @@ class ContactForm extends React.Component {
       <FormWrapper>
         <Form
           onSubmit={this.handleFormSubmit}
+          name="contact"
+          method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
+          <input type="hidden" name="form-name" value="contact" />
           <Field>
             <Label htmlFor="name">Name:</Label>
             <Input
