@@ -4,10 +4,7 @@ import { DiscussionEmbed } from 'disqus-react';
 const Disqus = ({ disqusConfig }) => {
   return (
     <div>
-      <DiscussionEmbed
-        shortname={process.env.DISQUS_SHORTNAME}
-        config={disqusConfig}
-      />
+      <DiscussionEmbed shortname="reactforcats" config={disqusConfig} />
     </div>
   );
 };
