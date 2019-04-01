@@ -60,7 +60,7 @@ class ContactForm extends React.Component {
     name: '',
     email: '',
     message: '',
-    recaptchaValue: ''
+    recaptchaValue: null
   };
 
   encode = data => {
@@ -96,7 +96,7 @@ class ContactForm extends React.Component {
   };
 
   render() {
-    const { name, email, message } = this.state;
+    const { name, email, message, recaptchaValue } = this.state;
     return (
       <FormWrapper>
         <Form
@@ -145,7 +145,9 @@ class ContactForm extends React.Component {
             sitekey={process.env.SITE_RECAPTCHA_KEY}
             onChange={this.handleRecaptcha}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={recaptchaValue ? false : true}>
+            Submit
+          </Button>
         </Form>
       </FormWrapper>
     );
