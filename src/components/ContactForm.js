@@ -105,6 +105,7 @@ class ContactForm extends React.Component {
           method="POST"
           action="/form-submitted/"
           data-netlify="true"
+          data-netlify-honeypot="bot-field"
           data-netlify-recaptcha="true"
         >
           <Field>
