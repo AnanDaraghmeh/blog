@@ -25,10 +25,10 @@ function NavMenu() {
       <NavLink to="/" activeStyle={activeLinkStyle}>
         HOME
       </NavLink>
-      <NavLink to="contact" activeStyle={activeLinkStyle}>
+      <NavLink to="/contact" activeStyle={activeLinkStyle}>
         CONTACT
       </NavLink>
-      <NavLink to="about" activeStyle={activeLinkStyle}>
+      <NavLink to="/about" activeStyle={activeLinkStyle}>
         ABOUT
       </NavLink>
     </NavWrapper>

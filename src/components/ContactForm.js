@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
+import Recaptcha from 'react-google-recaptcha';
 
 const FormWrapper = styled.div`
   margin-top: 3rem;
@@ -46,6 +47,7 @@ const Label = styled.label`
 
 const Button = styled.button`
   border: none;
+  margin-top: 0.5rem;
   padding: 0.2rem 0.4rem;
   background: #7a4316;
   border-radius: 5px;
@@ -57,7 +59,8 @@ class ContactForm extends React.Component {
   state = {
     name: '',
     email: '',
-    message: ''
+    message: '',
+    recaptchaValue: ''
   };
 
   encode = data => {
@@ -72,6 +75,12 @@ class ContactForm extends React.Component {
     });
   };
 
+  handleRecaptcha = value => {
+    this.setState({
+      recaptchaValue: value
+    });
+  };
+
   handleFormSubmit = e => {
     e.preventDefault();
     fetch('/', {
@@ -82,7 +91,7 @@ class ContactForm extends React.Component {
         ...this.state
       })
     })
-      .then(() => navigate('/form-submitted'))
+      .then(() => navigate('/form-submitted/'))
       .catch(error => console.log(error));
   };
 
@@ -94,10 +103,10 @@ class ContactForm extends React.Component {
           onSubmit={this.handleFormSubmit}
           name="contact"
           method="POST"
+          action="/form-submitted/"
           data-netlify="true"
-          data-netlify-honeypot="bot-field"
+          data-netlify-recaptcha="true"
         >
-          <input type="hidden" name="form-name" value="contact" />
           <Field>
             <Label htmlFor="name">Name:</Label>
             <Input
@@ -132,6 +141,10 @@ class ContactForm extends React.Component {
               required
             />
           </Field>
+          <Recaptcha
+            sitekey={process.env.SITE_RECAPTCHA_KEY}
+            onChange={this.handleRecaptcha}
+          />
           <Button type="submit">Submit</Button>
         </Form>
       </FormWrapper>
