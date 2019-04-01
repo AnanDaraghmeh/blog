@@ -1,164 +1,166 @@
-import React from 'react';
-import styled from 'styled-components';
-import { navigate } from 'gatsby';
-import Recaptcha from 'react-google-recaptcha';
+// import React from 'react';
+// import styled from 'styled-components';
+// import { navigate } from 'gatsby';
+// import Recaptcha from 'react-google-recaptcha';
 
-const FormWrapper = styled.div`
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Form = styled.form`
-  width: 90%;
-  font-size: 0.9rem;
-  @media only screen and (min-width: 768px) {
-    width: 80%;
-  }
-`;
+// const FormWrapper = styled.div`
+//   margin-top: 3rem;
+//   margin-bottom: 3rem;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
+// const Form = styled.form`
+//   width: 90%;
+//   font-size: 0.9rem;
+//   @media only screen and (min-width: 768px) {
+//     width: 80%;
+//   }
+// `;
 
-const Field = styled.div`
-  display: block;
-  margin-bottom: 0.5rem;
-`;
+// const Field = styled.div`
+//   display: block;
+//   margin-bottom: 0.5rem;
+// `;
 
-const Input = styled.input`
-  padding: 0.3rem;
-  border-radius: 5px;
-  width: 100%;
-  border: 1px solid #7a4316;
-  background: #f5f2f0;
-`;
+// const Input = styled.input`
+//   padding: 0.3rem;
+//   border-radius: 5px;
+//   width: 100%;
+//   border: 1px solid #7a4316;
+//   background: #f5f2f0;
+// `;
 
-const Textarea = styled.textarea`
-  padding: 0.3rem;
-  border-radius: 5px;
-  resize: none;
-  width: 100%;
-  border: 1px solid #7a4316;
-  background: #f5f2f0;
-`;
+// const Textarea = styled.textarea`
+//   padding: 0.3rem;
+//   border-radius: 5px;
+//   resize: none;
+//   width: 100%;
+//   border: 1px solid #7a4316;
+//   background: #f5f2f0;
+// `;
 
-const Label = styled.label`
-  display: block;
-  margin-bottom: 0.2rem;
-`;
+// const Label = styled.label`
+//   display: block;
+//   margin-bottom: 0.2rem;
+// `;
 
-const Button = styled.button`
-  border: none;
-  margin-top: 0.5rem;
-  padding: 0.2rem 0.4rem;
-  background: #7a4316;
-  border-radius: 5px;
-  color: #f5f2f0;
-  cursor: pointer;
-`;
+// const Button = styled.button`
+//   border: none;
+//   margin-top: 0.5rem;
+//   padding: 0.2rem 0.4rem;
+//   background: #7a4316;
+//   border-radius: 5px;
+//   color: #f5f2f0;
+//   cursor: pointer;
+// `;
 
-class ContactForm extends React.Component {
-  state = {
-    name: '',
-    email: '',
-    message: '',
-    recaptchaValue: null,
-    displayRecaptchaMessage: false
-  };
+// class ContactForm extends React.Component {
+//   state = {
+//     name: '',
+//     email: '',
+//     message: '',
+//     recaptchaValue: null,
+//     displayRecaptchaMessage: false
+//   };
 
-  encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
-  };
+//   encode = data => {
+//     return Object.keys(data)
+//       .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+//       .join('&');
+//   };
 
-  handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
+//   handleInputChange = e => {
+//     this.setState({
+//       [e.target.name]: e.target.value
+//     });
+//   };
 
-  handleRecaptcha = value => {
-    this.setState({
-      // for netlify to accept form submission
-      'g-recaptcha-response': value,
-      // to show error message if the value is null
-      recaptchaValue: value
-    });
-  };
+//   handleRecaptcha = value => {
+//     this.setState({
+//       // for netlify to accept form submission
+//       'g-recaptcha-response': value,
+//       // to show error message if the value is null
+//       recaptchaValue: value
+//     });
+//   };
 
-  handleFormSubmit = e => {
-    e.preventDefault();
-    if (this.state.recaptchaValue === null) {
-      this.setState({
-        displayRecaptchaMessage: true
-      });
-    } else {
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({
-          'form-name': 'contact',
-          ...this.state
-        })
-      })
-        .then(() => navigate('/form-submitted/'))
-        .catch(error => console.log(error));
-    }
-  };
+//   handleFormSubmit = e => {
+//     e.preventDefault();
+//     if (this.state.recaptchaValue === null) {
+//       this.setState({
+//         displayRecaptchaMessage: true
+//       });
+//     } else {
+//       fetch('/', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+//         body: this.encode({
+//           'form-name': 'contact',
+//           ...this.state
+//         })
+//       })
+//         .then(() => navigate('/form-submitted/'))
+//         .catch(error => console.log(error));
+//     }
+//   };
 
-  render() {
-    const { name, email, message, displayRecaptchaMessage } = this.state;
-    return (
-      <FormWrapper>
-        <Form onSubmit={this.handleFormSubmit}>
-        <input type="hidden" name="form-name" value="contact" />
-          <Field>
-            <Label htmlFor="name">Name:</Label>
-            <Input
-              onChange={this.handleInputChange}
-              value={name}
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your name"
-              required
-            />
-          </Field>
-          <Field>
-            <Label htmlFor="email">Email:</Label>
-            <Input
-              onChange={this.handleInputChange}
-              value={email}
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Your email"
-              required
-            />
-          </Field>
-          <Field>
-            <Textarea
-              onChange={this.handleInputChange}
-              value={message}
-              name="message"
-              placeholder="Your message"
-              rows="3"
-              required
-            />
-          </Field>
-          <Recaptcha
-            sitekey={process.env.SITE_RECAPTCHA_KEY}
-            onChange={this.handleRecaptcha}
-          />
-          {displayRecaptchaMessage && (
-            <p style={{ marginBottom: '0' }}>
-              Please check the box "I'm not a robot" to proceed!
-            </p>
-          )}
-          <Button type="submit">Submit</Button>
-        </Form>
-      </FormWrapper>
-    );
-  }
-}
+//   render() {
+//     const { name, email, message, displayRecaptchaMessage } = this.state;
+//     return (
+//       <FormWrapper>
+//         <Form onSubmit={this.handleFormSubmit}>
+//           <input type="hidden" name="form-name" value="contact" />
+//           <Field>
+//             <Label htmlFor="name">Name:</Label>
+//             <Input
+//               onChange={this.handleInputChange}
+//               value={name}
+//               type="text"
+//               id="name"
+//               name="name"
+//               placeholder="Your name"
+//               required
+//             />
+//           </Field>
+//           <Field>
+//             <Label htmlFor="email">Email:</Label>
+//             <Input
+//               onChange={this.handleInputChange}
+//               value={email}
+//               type="email"
+//               id="email"
+//               name="email"
+//               placeholder="Your email"
+//               required
+//             />
+//           </Field>
+//           <Field>
+//             <Label htmlFor="message">Message:</Label>
+//             <Textarea
+//               onChange={this.handleInputChange}
+//               value={message}
+//               name="message"
+//               id="message"
+//               placeholder="Your message"
+//               rows="3"
+//               required
+//             />
+//           </Field>
+//           <Recaptcha
+//             sitekey={process.env.SITE_RECAPTCHA_KEY}
+//             onChange={this.handleRecaptcha}
+//           />
+//           {displayRecaptchaMessage && (
+//             <p style={{ marginBottom: '0' }}>
+//               Please check the box "I'm not a robot" to proceed!
+//             </p>
+//           )}
+//           <Button type="submit">Submit</Button>
+//         </Form>
+//       </FormWrapper>
+//     );
+//   }
+// }
 
-export default ContactForm;
+// export default ContactForm;
