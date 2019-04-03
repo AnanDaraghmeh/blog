@@ -16,7 +16,7 @@ const NavLink = styled(Link)`
 `;
 
 const activeLinkStyle = {
-  color: '#a05619'
+  color: 'var(--color-secondary)'
 };
 
 function NavMenu() {

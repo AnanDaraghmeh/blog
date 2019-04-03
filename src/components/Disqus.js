@@ -1,12 +1,12 @@
 import React from 'react';
-import { DiscussionEmbed } from 'disqus-react';
+import { DiscussionEmbed, CommentCount } from 'disqus-react';
 
-const Disqus = ({ disqusConfig }) => {
-  return (
-    <div>
-      <DiscussionEmbed shortname="reactforcats" config={disqusConfig} />
-    </div>
-  );
+const DisqusDiscussionEmbed = ({ disqusConfig }) => {
+  return <DiscussionEmbed shortname="reactforcats" config={disqusConfig} />;
 };
 
-export default Disqus;
+const DisqusCommentCount = ({ disqusConfig }) => {
+  return <CommentCount shortname="reactforcats" config={disqusConfig} />;
+};
+
+export { DisqusDiscussionEmbed, DisqusCommentCount };

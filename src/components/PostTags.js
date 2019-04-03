@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background: #f5f2f0;
+  background: var(--color-tertiary);
   padding: 0.5rem;
 `;
 const Tags = styled.ul`

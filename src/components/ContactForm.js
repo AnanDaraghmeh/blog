@@ -29,8 +29,8 @@ const Input = styled.input`
   padding: 0.3rem;
   border-radius: 5px;
   width: 100%;
-  border: 1px solid #7a4316;
-  background: #f5f2f0;
+  border: 1px solid var(--color-secondary);
+  background: var(--color-tertiary);
 `;
 
 const Textarea = styled.textarea`
@@ -38,8 +38,8 @@ const Textarea = styled.textarea`
   border-radius: 5px;
   resize: none;
   width: 100%;
-  border: 1px solid #7a4316;
-  background: #f5f2f0;
+  border: 1px solid var(--color-secondary);
+  background: var(--color-tertiary);
 `;
 
 const Label = styled.label`
@@ -51,9 +51,9 @@ const Button = styled.button`
   border: none;
   margin-top: 0.5rem;
   padding: 0.2rem 0.4rem;
-  background: #7a4316;
+  background: var(--color-secondary);
   border-radius: 5px;
-  color: #f5f2f0;
+  color: var(--color-tertiary);
   cursor: pointer;
 `;
 

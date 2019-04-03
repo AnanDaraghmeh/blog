@@ -1,3 +1,10 @@
+:root {
+  --color-primary: #613b1f;
+  --color-secondary: #7a4316;
+  --color-tertiary: #f5f2f0;
+  --color-bg: #fff;
+}
+
 *,
 *::after,
 *::before {
@@ -7,33 +14,30 @@
 }
 
 ::placeholder {
-  color: #613b1f;
+  color: var(--color-primary);
   opacity: 0.8;
 }
 
 ::selection {
-  color: #613b1f;
-  background: #f5f2f0;
+  color: var(--color-primary);
+  background: var(--color-tertiary);
 }
 
 body {
-  background-color: #fff;
+  background-color: var(--color-bg);
 }
 
 a {
-  color: #613b1f;
+  color: var(--color-primary);
   transition: color 0.3s;
 }
 a:hover {
-  color: #a05619;
-}
-a:active {
-  color: #7a4316;
+  color: var(--color-secondary);
 }
 
 /* inline code*/
 code {
-  color: #a05619;
+  color: var(--color-secondary);
 }
 
 /* code blocks*/

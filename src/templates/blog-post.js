@@ -9,7 +9,7 @@ import SEO from '../components/seo';
 import Divider from '../components/layout/Divider';
 import SocialShare from '../components/SocialShare';
 import PostTags from '../components/PostTags';
-import Disqus from '../components/Disqus';
+import { DisqusDiscussionEmbed } from '../components/Disqus';
 
 const Navigation = styled.ul`
   display: flex;
@@ -76,7 +76,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </Navigation>
-        <Disqus disqusConfig={disqusConfig} />
+        <DisqusDiscussionEmbed disqusConfig={disqusConfig} />
       </Layout>
     );
   }

@@ -3,7 +3,7 @@ import { Link, StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background: #f5f2f0;
+  background: var(--color-tertiary);
   padding: 0.5rem;
 `;
 const TagList = styled.ul`
@@ -20,14 +20,14 @@ const TagList = styled.ul`
 const TagLink = styled(Link)`
   display: inline-block;
   text-decoration: none;
-  background: #96653e;
+  background: var(--color-primary);
   color: white;
   padding: 0.1rem 0.2rem;
   margin-right: 0.2rem;
   border-radius: 5px;
   transition: all 0.3s;
   &:hover {
-    background: #613b1f;
+    background: var(--color-secondary);
     color: white;
   }
 `;

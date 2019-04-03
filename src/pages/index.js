@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Layout from '../components/layout/Layout';
 import SEO from '../components/seo';
 import SideMenu from '../components/layout/SideMenu';
+import { DisqusCommentCount } from '../components/Disqus';
 
 const Grid = styled.div`
   display: grid;
@@ -26,6 +27,15 @@ const Grid = styled.div`
   }
 `;
 
+const CommentBadge = styled.span`
+  display: inline-block;
+  background: var(--color-tertiary);
+  font-size: 0.7rem;
+  padding: 0.1rem;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+`;
+
 class HomePage extends React.Component {
   render() {
     const posts = this.props.data.allContentfulPost.edges;
@@ -43,6 +53,17 @@ class HomePage extends React.Component {
                     <Link to={`/${post.node.slug}`}>{post.node.title}</Link>
                   </h3>
                   <small>{post.node.publishDate}</small>
+                  <CommentBadge>
+                    <DisqusCommentCount
+                      disqusConfig={{
+                        url: `${this.props.data.site.siteMetadata.siteUrl}/${
+                          post.node.slug
+                        }`,
+                        identifier: post.node.id,
+                        title: post.node.title
+                      }}
+                    />
+                  </CommentBadge>
                   <p>
                     {post.node.description.internal.content ||
                       post.node.body.childMarkdownRemark.excerpt}
@@ -85,6 +106,11 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }
