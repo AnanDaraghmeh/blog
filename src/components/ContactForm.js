@@ -54,7 +54,11 @@ const Button = styled.button`
   background: var(--color-secondary);
   border-radius: 5px;
   color: var(--color-tertiary);
-  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    cursor: pointer;
+    background: var(--color-primary);
+  }
 `;
 
 class ContactForm extends React.Component {
@@ -115,7 +119,12 @@ class ContactForm extends React.Component {
     const { name, email, message, displayRecaptchaMessage } = this.state;
     return (
       <>
-        {this.state.showSuccessOverlay && <FormSubmitted />}
+        {this.state.showSuccessOverlay && (
+          <FormSubmitted
+            title="Thank you!"
+            text="Your message has been submitted."
+          />
+        )}
         {this.state.showForm && (
           <FormWrapper>
             <Form onSubmit={this.handleFormSubmit}>

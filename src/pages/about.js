@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout/Layout';
 import SEO from '../components/seo';
+import MailingList from '../components/MailingList';
 
 function about({ data }) {
   return (
@@ -14,6 +15,7 @@ function about({ data }) {
         alt="logo"
         style={{ width: '150px', margin: '3rem auto' }}
       />
+      <MailingList />
     </Layout>
   );
 }

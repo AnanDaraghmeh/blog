@@ -12,10 +12,11 @@ const Thanks = styled.div`
 
 class FormSubmitted extends React.Component {
   render() {
+    const { title, text } = this.props;
     return (
       <Thanks>
-        <h3>Thank you!</h3>
-        <p>Your message has been submitted.</p>
+        <h3>{title}</h3>
+        <p>{text}</p>
         <Link to="/">Return to home page</Link>
       </Thanks>
     );
