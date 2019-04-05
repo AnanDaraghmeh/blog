@@ -77,6 +77,19 @@ module.exports = {
         endpoint: process.env.MAILCHIMP_ENDPOINT
       }
     },
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        fields: [`title`, `tags`],
+        resolvers: {
+          ContentfulPost: {
+            title: node => node.title,
+            tags: node => node.tags,
+            slug: node => node.slug
+          }
+        }
+      }
+    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,

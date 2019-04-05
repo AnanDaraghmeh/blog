@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { searchTerm } from '../redux/actions';
 
 import Layout from '../components/layout/Layout';
 import SEO from '../components/seo';
@@ -43,15 +41,6 @@ class HomePage extends React.Component {
     posts: this.props.data.allContentfulPost.edges
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.search !== prevProps.search) {
-      this.setState({
-        posts: this.props.data.allContentfulPost.edges.filter(post =>
-          post.node.title.toLowerCase().match(this.props.search)
-        )
-      });
-    }
-  }
   render() {
     const { posts } = this.state;
     return (
@@ -94,16 +83,7 @@ class HomePage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    search: state.search
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { searchTerm }
-)(HomePage);
+export default HomePage;
 
 export const pageQuery = graphql`
   query {

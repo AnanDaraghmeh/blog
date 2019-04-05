@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import BIO from '../bio';
 import AllTags from '../AllTags';
-import SearchFilter from './SearchFilter';
 
 const TagListWrapper = styled.div`
   @media only screen and (max-width: 900px) {
@@ -18,7 +17,6 @@ function SideMenu() {
         customName="Hi! I'm Anan, a web developer."
         text="I write about web development in general particularly things related to react."
       />
-      <SearchFilter />
       <TagListWrapper>
         <AllTags />
       </TagListWrapper>
