@@ -34,7 +34,7 @@ function Bio({ customName, text }) {
               }}
               imgStyle={{ borderRadius: '50%' }}
             />
-            <div style={{ fontSize: '0.8rem', marginBottom: '1rem' }}>
+            <div style={{ fontSize: '0.8rem', marginBottom: '0' }}>
               <span style={{ display: 'block' }}>
                 <strong>{customName}</strong>
               </span>

@@ -68,8 +68,7 @@ class ContactForm extends React.Component {
     message: '',
     recaptchaValue: null,
     displayRecaptchaMessage: false,
-    showSuccessOverlay: false,
-    showForm: true
+    showSuccessOverlay: false
   };
 
   encode = data => {
@@ -108,24 +107,28 @@ class ContactForm extends React.Component {
           ...this.state
         })
       })
-        .then(() =>
-          this.setState({ showSuccessOverlay: true, showForm: false })
-        )
+        .then(() => this.setState({ showSuccessOverlay: true }))
         .catch(error => console.log(error));
     }
   };
 
   render() {
-    const { name, email, message, displayRecaptchaMessage } = this.state;
+    const {
+      name,
+      email,
+      message,
+      displayRecaptchaMessage,
+      showSuccessOverlay
+    } = this.state;
     return (
       <>
-        {this.state.showSuccessOverlay && (
+        {showSuccessOverlay && (
           <FormSubmitted
             title="Thank you!"
             text="Your message has been submitted."
           />
         )}
-        {this.state.showForm && (
+        {!showSuccessOverlay && (
           <FormWrapper>
             <Form onSubmit={this.handleFormSubmit}>
               <input type="hidden" name="form-name" value="contact" />

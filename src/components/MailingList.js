@@ -55,8 +55,7 @@ export class MailingList extends Component {
   state = {
     email: '',
     responseResult: null,
-    responseMessage: null,
-    showForm: true
+    responseMessage: null
   };
 
   handleInputChange = e => {
@@ -70,13 +69,12 @@ export class MailingList extends Component {
     addToMailchimp(this.state.email).then(response => {
       this.setState({
         responseResult: response.result, //mailchimp response is either success or error
-        responseMessage: response.msg, // user friendly message from mailchimp
-        showForm: false
+        responseMessage: response.msg // user friendly message from mailchimp
       });
     });
   };
   render() {
-    const { email, responseResult, responseMessage, showForm } = this.state;
+    const { email, responseResult, responseMessage } = this.state;
     return (
       <>
         {responseResult && (
@@ -85,7 +83,7 @@ export class MailingList extends Component {
             text={ReactHtmlParser(responseMessage)}
           />
         )}
-        {showForm && (
+        {!responseResult && (
           <FormWrapper>
             <Form onSubmit={this.handleFormSubmit}>
               <Field>

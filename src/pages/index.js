@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { searchTerm } from '../redux/actions';
 
 import Layout from '../components/layout/Layout';
 import SEO from '../components/seo';
@@ -37,15 +39,30 @@ const CommentBadge = styled.span`
 `;
 
 class HomePage extends React.Component {
-  render() {
-    const posts = this.props.data.allContentfulPost.edges;
+  state = {
+    posts: this.props.data.allContentfulPost.edges
+  };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.search !== prevProps.search) {
+      this.setState({
+        posts: this.props.data.allContentfulPost.edges.filter(post =>
+          post.node.title.toLowerCase().match(this.props.search)
+        )
+      });
+      console.log(this.state.posts);
+    }
+  }
+  render() {
+    const { posts } = this.state;
     return (
       <Layout>
         <SEO title="All posts" />
         <Grid>
           <SideMenu />
           <div>
+            <h2>Recent Posts:</h2>
+            {posts.length === 0 && <p>No Match!</p>}
             {posts.map(post => {
               return (
                 <div key={post.node.id}>
@@ -78,7 +95,16 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+const mapStateToProps = state => {
+  return {
+    search: state.search
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { searchTerm: searchTerm }
+)(HomePage);
 
 export const pageQuery = graphql`
   query {

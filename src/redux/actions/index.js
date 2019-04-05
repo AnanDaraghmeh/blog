@@ -1,6 +1,6 @@
-export const hello = () => {
+export const searchTerm = term => {
   return {
-    type: 'HELLO',
-    payload: 'Hello redux!'
+    type: 'SEARCH_TERM',
+    payload: term
   };
 };
