@@ -50,7 +50,6 @@ class HomePage extends React.Component {
           post.node.title.toLowerCase().match(this.props.search)
         )
       });
-      console.log(this.state.posts);
     }
   }
   render() {
@@ -103,7 +102,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { searchTerm: searchTerm }
+  { searchTerm }
 )(HomePage);
 
 export const pageQuery = graphql`

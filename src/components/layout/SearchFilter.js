@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import { searchTerm } from '../../redux/actions';
 
 const Input = styled.input`
-  display: block;
+  display: none;
   margin: 1rem auto 0rem auto;
-  width: 80%;
   background: var(--color-tertiary);
   font-size: 0.8rem;
   padding: 0.2rem 0.3rem;
   border-radius: 5px;
   border: 1px solid var(--color-primary);
   @media only screen and (min-width: 900px) {
-    width: 90%;
+    display: block;
+    width: 95%;
     margin: 1rem auto;
   }
 `;
