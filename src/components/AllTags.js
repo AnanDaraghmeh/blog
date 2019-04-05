@@ -5,6 +5,14 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   background: var(--color-tertiary);
   padding: 0.5rem;
+  border-radius: 5px;
+`;
+
+const TagHeading = styled.p`
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.8rem;
 `;
 const TagList = styled.ul`
   list-style: none;
@@ -40,7 +48,7 @@ const AllTags = () => {
         const group = data.allContentfulPost.group;
         return (
           <Wrapper>
-            Tags:
+            <TagHeading>Tags:</TagHeading>
             <TagList>
               {group.map(tag => (
                 <li key={tag.fieldValue}>
