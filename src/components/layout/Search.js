@@ -20,10 +20,12 @@ const SearchResultList = styled.ul`
   list-style: none;
   background: var(--color-tertiary);
   border-radius: 5px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
   position: absolute;
   top: 110%;
   right: 0%;
   width: 100%;
+  z-index: 10;
   & li {
     font-size: 0.8rem;
     padding: 0.2rem 0.4rem;

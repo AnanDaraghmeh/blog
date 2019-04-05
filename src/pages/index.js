@@ -49,8 +49,7 @@ class HomePage extends React.Component {
         <Grid>
           <SideMenu />
           <div>
-            <h2>Recent Posts:</h2>
-            {posts.length === 0 && <p>No Match!</p>}
+            <h3>All Posts:</h3>
             {posts.map(post => {
               return (
                 <div key={post.node.id}>
