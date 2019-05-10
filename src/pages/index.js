@@ -49,7 +49,7 @@ class HomePage extends React.Component {
         <Grid>
           <SideMenu />
           <div>
-            <h3>All Posts:</h3>
+            <h3>Recent Posts:</h3>
             {posts.map(post => {
               return (
                 <div key={post.node.id}>

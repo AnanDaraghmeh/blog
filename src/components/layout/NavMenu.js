@@ -7,8 +7,14 @@ import Search from './Search';
 const NavWrapper = styled.div`
   margin-bottom: 1rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: space-between;
+  @media only screen and (min-width: 500px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -21,7 +27,7 @@ const NavLink = styled(Link)`
 
 const SearchWrapper = styled.div`
   flex-basis: 50%;
-  @media only screen and (min-width: 500px) {
+  @media only screen and (min-width: 768px) {
     flex-basis: 30%;
   }
 `;

@@ -32,7 +32,11 @@ function Bio({ customName, text }) {
                 marginRight: '1rem',
                 marginBottom: '1rem'
               }}
-              imgStyle={{ borderRadius: '50%' }}
+              imgStyle={{
+                backgroundColor: '#f5f2f0',
+                padding: '0.5rem',
+                borderRadius: '50%'
+              }}
             />
             <div style={{ fontSize: '0.8rem', marginBottom: '0' }}>
               <span style={{ display: 'block' }}>
@@ -64,7 +68,7 @@ const bioQuery = graphql`
         }
       }
     }
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+    avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
       childImageSharp {
         fixed(width: 75, height: 75) {
           ...GatsbyImageSharpFixed_tracedSVG
